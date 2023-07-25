@@ -1,86 +1,41 @@
 const React = require('react');
+const Navbar = require('./Navbar');
 
-function Layout({ children, title, message }) {
+module.exports = function Layout({ title, children, userLogin }) {
   return (
-    <html lang="ru">
+    <html lang="en">
       <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-        {/* Bootstrap CSS */}
+        <title>{title}</title>
         <link
           rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-          crossOrigin="anonymous"
+          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
         />
-        {/* Bootstrap Scripts */}
-        <title>Hello, shop!</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" />
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;300;400&display=swap"
+          rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/css/style.css" />
         <script
           defer
-          src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-          integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-          crossOrigin="anonymous"
+          src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"
         />
-        <script
-          defer
-          src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-          integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-          crossOrigin="anonymous"
-        />
-        <script
-          defer
-          src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-          integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-          crossOrigin="anonymous"
-        />
-        {/* User Scripts */}
-        {/* <script defer src="..."></scrip */}
+        <script defer src="/js/authScript.js" />
+        <script defer src="/js/itemsScript.js" />
+        <script defer src="/js/cartScript.js" />
       </head>
       <body>
-
-        <div className="container">
-          <nav className="navbar navbar-expand-lg navbar-light bg-white">
-            <a className="navbar-brand" href="/">Look My Shop</a>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon" />
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav ml-auto">
-
-                <li className="nav-item">
-                  <a className="nav-link mr-4" href="#">item-1</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link mr-4" href="#">item-2</a>
-                </li>
-                <li className="nav-item mr-4">
-                  <a className="nav-link mr-4" href="#">item-3</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">item-4</a>
-                </li>
-
-              </ul>
-            </div>
-          </nav>
-          <div className="jumbotron">
-            <h3 className="display-9 text-center text-dark">{title}Title</h3>
-            <p className="lead text-center text-secondary">{message}Some information<br /> for user</p>
-          </div>
-          {children}
-        </div>
+        <Navbar userLogin={userLogin} />
+        <div className="layout_container">{children}</div>
       </body>
     </html>
   );
-}
-
-module.exports = Layout;
+};
