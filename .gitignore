@@ -116,3 +116,6 @@ dist
 .pnp.*
 
 .idea/
+
+/session
+.DR_Store
